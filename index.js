@@ -1,16 +1,5 @@
 const axios = require('axios');
 
-// axios.get('https://api.opensea.io/api/v1/collection/rtfkt-mnlth?format=json')
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   })
-//   .then(() => {
-//     console.log(`ok.`);
-//   })
-
 let items = {
   mnlth: {
     slug: 'rtfkt-mnlth',
