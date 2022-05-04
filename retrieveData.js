@@ -3,11 +3,12 @@ const { performance } = require('perf_hooks');
 
 const selectors = {
   buyNow: '#Body\\ react-aria-2 > div > div > button:nth-child(1)',
+  clearFilter: '#main > div > div > div.Blockreact__Block-sc-1xf18x6-0.elqhCm > div > div > div > div.AssetSearchView--results.collection--results > div.AssetSearchView--results-header-pills > div > button',
   dunkGenesis: {
     humanBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(1)',
     robotBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(2)',
-    angelBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(3)',
-    demonBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(4)',
+    demonBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(3)',
+    angelBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(4)',
     reptileBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(5)',
     undeadBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(6)',
     murakamiBox: '#Body\\ react-aria-12 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(7)',
@@ -15,6 +16,16 @@ const selectors = {
   },
   firstListingPrice: '#main > div > div > div.Blockreact__Block-sc-1xf18x6-0.elqhCm > div > div > div > div.AssetSearchView--results.collection--results > div.Blockreact__Block-sc-1xf18x6-0.elqhCm.AssetsSearchView--assets > div.fresnel-container.fresnel-greaterThanOrEqual-sm > div > div > div:nth-child(1) > div > article > a > div.Blockreact__Block-sc-1xf18x6-0.Flexreact__Flex-sc-1twd32i-0.SpaceBetweenreact__SpaceBetween-sc-jjxyhg-0.AssetCardFooterreact__StyledContainer-sc-nedjig-0.kLMBbO.jYqxGr.gJwgfT.cBTfDg > div > div.Blockreact__Block-sc-1xf18x6-0.Flexreact__Flex-sc-1twd32i-0.FlexColumnreact__FlexColumn-sc-1wwz3hp-0.hrRSNm.jYqxGr.ksFzlZ > div.AssetCardFooter--price > div',
   floorPrice: '#main > div > div > div.CollectionHeaderreact__DivContainer-sc-1woywpk-0.jgfqaE > div.Blockreact__Block-sc-1xf18x6-0.Flexreact__Flex-sc-1twd32i-0.fZLRIh.jYqxGr > div:nth-child(5) > div > div:nth-child(3) > a > div > div.Blockreact__Block-sc-1xf18x6-0.Flexreact__Flex-sc-1twd32i-0.elqhCm.jYqxGr.Info--icon > div > span > div',
+  skinVial: {
+    humanBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(1)',
+    robotBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(2)',
+    demonBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(3)',
+    angelBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(4)',
+    reptileBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(5)',
+    undeadBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(6)',
+    murakamiBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(7)',
+    alienBox: '#Body\\ react-aria-10 > div > div > div.Scrollboxreact__DivContainer-sc-1b04elr-0.gUuGNP.StringTraitFilter--results > div > button:nth-child(8)'
+  },
   supply: '#main > div > div > div.Blockreact__Block-sc-1xf18x6-0.elqhCm > div > div > div > div.AssetSearchView--results.collection--results > div.Blockreact__Block-sc-1xf18x6-0.fbumkB > div > p',
 }
 
@@ -31,36 +42,44 @@ let dunkGenesis = {
   supply: 0,
   traits: {
     human: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     robot: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     demon: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     angel: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     reptile: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     undead: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     murakami: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     alien: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
   }
 };
@@ -70,114 +89,132 @@ let skinVial = {
   supply: 0,
   traits: {
     human: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     robot: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     demon: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     angel: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     reptile: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     undead: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     murakami: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
     alien: {
+      floorPrice: 0,
       supply: 0,
-      floorPrice: 0
+      supplyListed: 0
     },
   }
 };
 
-const retrieveMnlthData = async (page) => {
+const retrieveMnlthData = async (browser) => {
+  const page = await browser.newPage();
+
   await page.goto('https://opensea.io/collection/rtfkt-mnlth');
-
   mnlth.floorPrice = await page.$eval(selectors.floorPrice, e => parseFloat(e.textContent));
+  page.close();
 }
 
-const retrieveMnlth2Data = async (page) => {
+const retrieveMnlth2Data = async (browser) => {
+  const page = await browser.newPage();
+
   await page.goto('https://opensea.io/collection/rtfktmonolith');
-
   mnlth2.floorPrice = await page.$eval(selectors.floorPrice, e => parseFloat(e.textContent));
+  page.close();
 }
 
-const retrieveSupply = async (page) => await page.$eval(selectors.supply, e => e.textContent);
+const retrieveSupply = async (page) => {
+  await page.waitForNetworkIdle();
+  return await page.$eval(selectors.supply, e => e.textContent);
+}
 
 const retrieveFirstListingPrice = async (page) => {
   await page.waitForSelector(selectors.firstListingPrice, {timeout: 5000});
   return await page.$eval(selectors.firstListingPrice, e => e.textContent);
 }
 
-const retrieveTraitsData = async (page, collectionSlug, itemToUpdate, traitKey, traitValue) => {
-  const url = `https://opensea.io/collection/${collectionSlug}?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=${traitKey}&search[stringTraits][0][values][0]=${traitValue}`;
+const toClick = async (page, button) => {
+ await page.$eval(button, button => button.click());
+}
 
+const retrieveTraitsData = async (page, selector, data) => {
   try {
-    await page.goto(url);
-    const totalSupply = await retrieveSupply(page);
-    await page.$eval(selectors.buyNow, button => button.click());
-    const floorPrice = await retrieveFirstListingPrice(page);
-
-    itemToUpdate.supply = totalSupply;
-    itemToUpdate.floorPrice = floorPrice;
+    await toClick(page, selector);
+    data.supply = await retrieveSupply(page);
+    await toClick(page, selectors.buyNow);
+    data.floorPrice = await retrieveFirstListingPrice(page);
+    data.supplyListed = await retrieveSupply(page);
+    await toClick(page, selectors.clearFilter);
   } catch (err) {
     console.log(err);
   }
 }
 
-const retrieveDunkGenesisData = async (page) => {
+const retrieveDunkGenesisData = async (browser) => {
   try {
     const collectionSlug = 'rtfkt-nike-cryptokicks';
-    const url = `https://opensea.io/collection/${collectionSlug}`;
+    const url = `https://opensea.io/collection/${collectionSlug}?search[sortAscending]=true&search[sortBy]=PRICE`;
+    const page = await browser.newPage();
+
     await page.goto(url);
-
     dunkGenesis.floorPrice = await page.$eval(selectors.floorPrice, e => e.textContent);
-    dunkGenesis.supply = await page.$eval(selectors.supply, e => e.textContent);
-
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.human, "DNA", "HUMAN");
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.robot, "DNA", "ROBOT");
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.demon, "DNA", "DEMON");
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.angel, "DNA", "ANGEL");
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.reptile, "DNA", "REPTILE");
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.undead, "DNA", "UNDEAD");
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.murakami, "DNA", "MURAKAMI");
-    await retrieveTraitsData(page, collectionSlug, dunkGenesis.traits.alien, "DNA", "ALIEN");
+    dunkGenesis.supply = await retrieveSupply(page);
+    await retrieveTraitsData(page, selectors.dunkGenesis.humanBox, dunkGenesis.traits.human);
+    await retrieveTraitsData(page, selectors.dunkGenesis.robotBox, dunkGenesis.traits.robot);
+    await retrieveTraitsData(page, selectors.dunkGenesis.demonBox, dunkGenesis.traits.demon);
+    await retrieveTraitsData(page, selectors.dunkGenesis.angelBox, dunkGenesis.traits.angel);
+    await retrieveTraitsData(page, selectors.dunkGenesis.reptileBox, dunkGenesis.traits.reptile);
+    await retrieveTraitsData(page, selectors.dunkGenesis.undeadBox, dunkGenesis.traits.undead);
+    await retrieveTraitsData(page, selectors.dunkGenesis.murakamiBox, dunkGenesis.traits.murakami);
+    await retrieveTraitsData(page, selectors.dunkGenesis.alienBox, dunkGenesis.traits.alien);
+    page.close();
   } catch (err) {
     console.log(err);
   }
 }
 
-const retrieveSkinVialData = async (page) => {
+const retrieveSkinVialData = async (browser) => {
   try {
     const collectionSlug = 'skinvial-evox';
-    const url = `https://opensea.io/collection/${collectionSlug}`;
+    const url = `https://opensea.io/collection/${collectionSlug}?search[sortAscending]=true&search[sortBy]=PRICE`;
+    const page = await browser.newPage();
+
     await page.goto(url);
-
     skinVial.floorPrice = await page.$eval(selectors.floorPrice, e => e.textContent);
-    skinVial.supply = await page.$eval(selectors.supply, e => e.textContent);
-
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.human, "DNA", "HUMAN");
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.robot, "DNA", "ROBOT");
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.demon, "DNA", "DEMON");
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.angel, "DNA", "ANGEL");
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.reptile, "DNA", "REPTILE");
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.undead, "DNA", "UNDEAD");
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.murakami, "DNA", "MURAKAMI");
-    await retrieveTraitsData(page, collectionSlug, skinVial.traits.alien, "DNA", "ALIEN");
+    skinVial.supply = await retrieveSupply(page);
+    await retrieveTraitsData(page, selectors.skinVial.humanBox, skinVial.traits.human);
+    await retrieveTraitsData(page, selectors.skinVial.robotBox, skinVial.traits.robot);
+    await retrieveTraitsData(page, selectors.skinVial.demonBox, skinVial.traits.demon);
+    await retrieveTraitsData(page, selectors.skinVial.angelBox, skinVial.traits.angel);
+    await retrieveTraitsData(page, selectors.skinVial.reptileBox, skinVial.traits.reptile);
+    await retrieveTraitsData(page, selectors.skinVial.undeadBox, skinVial.traits.undead);
+    await retrieveTraitsData(page, selectors.skinVial.murakamiBox, skinVial.traits.murakami);
+    await retrieveTraitsData(page, selectors.skinVial.alienBox, skinVial.traits.alien);
+    page.close();
   } catch (err) {
     console.log(err);
   }
@@ -188,12 +225,13 @@ const retrieveData = async () => {
   const browser = await puppeteer.launch({
     headless: false
   });
-  const page = await browser.newPage();
 
-  await retrieveMnlthData(page);
-  await retrieveMnlth2Data(page);
-  await retrieveSkinVialData(page);
-  await retrieveDunkGenesisData(page);
+  await Promise.all([
+    retrieveMnlthData(browser),
+    retrieveMnlth2Data(browser),
+    retrieveSkinVialData(browser),
+    retrieveDunkGenesisData(browser)
+  ]);
   await browser.close();
 
   console.log(performance.now() - start);
@@ -201,13 +239,11 @@ const retrieveData = async () => {
     mnlth,
     mnlth2,
     skinVial,
-    dunkGenesis,
+    dunkGenesis
   });
 }
 
 (async () => {
   const data = await retrieveData();
-  console.log(data);
   console.log(JSON.stringify(data));
-  return ;
 })();
