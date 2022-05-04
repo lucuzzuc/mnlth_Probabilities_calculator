@@ -149,12 +149,12 @@ const retrieveMnlth2Data = async (browser) => {
 
 const retrieveSupply = async (page) => {
   await page.waitForNetworkIdle();
-  return await page.$eval(selectors.supply, e => e.textContent);
+  return await page.$eval(selectors.supply, e => parseInt(e.textContent.replace(" ", "")));
 }
 
 const retrieveFirstListingPrice = async (page) => {
   await page.waitForSelector(selectors.firstListingPrice, {timeout: 5000});
-  return await page.$eval(selectors.firstListingPrice, e => e.textContent);
+  return await page.$eval(selectors.firstListingPrice, e => parseFloat(e.textContent));
 }
 
 const toClick = async (page, button) => {
@@ -181,7 +181,7 @@ const retrieveDunkGenesisData = async (browser) => {
     const page = await browser.newPage();
 
     await page.goto(url);
-    dunkGenesis.floorPrice = await page.$eval(selectors.floorPrice, e => e.textContent);
+    dunkGenesis.floorPrice = await page.$eval(selectors.floorPrice, e => parseFloat(e.textContent));
     dunkGenesis.supply = await retrieveSupply(page);
     await retrieveTraitsData(page, selectors.dunkGenesis.humanBox, dunkGenesis.traits.human);
     await retrieveTraitsData(page, selectors.dunkGenesis.robotBox, dunkGenesis.traits.robot);
@@ -204,7 +204,7 @@ const retrieveSkinVialData = async (browser) => {
     const page = await browser.newPage();
 
     await page.goto(url);
-    skinVial.floorPrice = await page.$eval(selectors.floorPrice, e => e.textContent);
+    skinVial.floorPrice = await page.$eval(selectors.floorPrice, e => parseFloat(e.textContent));
     skinVial.supply = await retrieveSupply(page);
     await retrieveTraitsData(page, selectors.skinVial.humanBox, skinVial.traits.human);
     await retrieveTraitsData(page, selectors.skinVial.robotBox, skinVial.traits.robot);
