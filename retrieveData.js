@@ -1,4 +1,3 @@
-const cron = require('node-cron');
 const fs = require('node:fs');
 const { performance } = require('perf_hooks');
 const puppeteer = require('puppeteer-extra');
@@ -280,7 +279,4 @@ const updateJSON = async () => {
 
 (async () => {
   await updateJSON();
-  cron.schedule('*/5 * * * *', async () => {
-    await updateJSON();
-  })
 })();
